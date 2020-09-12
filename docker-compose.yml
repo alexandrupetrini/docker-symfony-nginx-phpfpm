@@ -1,0 +1,30 @@
+version: "2"
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  nginx:
+    image: "bitnami/nginx:latest"
+    ports:
+      - "80:8181"
+      - "443:8143"
+    volumes:
+      - ./Docker/nginx/vhosts/my_server_block_http_https.conf:/opt/bitnami/nginx/conf/server_blocks/my_server_block_http_https.conf:ro
+      - .:/app
+    depends_on:
+      - app
+    networks:
+      - app-tier
+
+  app:
+    # tty: true
+    image: "bitnami/php-fpm:7.4"
+    build: ./Docker/app
+    volumes:
+      - ./Docker/app/php/10-php.ini:/opt/bitnami/php/etc/conf.d/10-php.ini:ro
+      - ./Docker/app/xdebug/30-xdebug.ini:/opt/bitnami/php/etc/conf.d/30-xdebug.ini:ro
+      - .:/app
+    networks:
+      - app-tier
