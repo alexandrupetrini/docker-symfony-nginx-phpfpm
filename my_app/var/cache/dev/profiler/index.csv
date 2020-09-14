@@ -293,3 +293,6 @@ cb434b,172.21.0.1,GET,https://myapp.example.com/?q=%2F,1600076426,,200
 8854a1,172.21.0.1,GET,https://myapp.example.com/?q=%2F,1600076427,,200
 ff6717,172.21.0.1,GET,https://myapp.example.com/?q=%2F,1600076427,,200
 a6ea28,172.21.0.1,GET,https://myapp.example.com/?q=%2F,1600076427,,200
+ca96e7,172.21.0.1,GET,https://myapp.example.com/?q=%2F,1600076492,,200
+2ff6ef,172.21.0.1,GET,https://myapp.example.com/favicon.ico?q=%2Ffavicon.ico,1600076492,a2a78f,404
+a2a78f,172.21.0.1,GET,https://myapp.example.com/favicon.ico?q=%2Ffavicon.ico,1600076492,,404
