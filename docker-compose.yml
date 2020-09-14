@@ -1,4 +1,4 @@
-version: "2"
+version: "3.4"
 
 networks:
   app-tier:
@@ -12,14 +12,13 @@ services:
       - "443:8143"
     volumes:
       - ./Docker/nginx/vhosts/my_server_block_http_https.conf:/opt/bitnami/nginx/conf/server_blocks/my_server_block_http_https.conf:ro
-      - .:/app
     depends_on:
       - app
     networks:
       - app-tier
 
   app:
-    # tty: true
+    tty: true
     image: "bitnami/php-fpm:7.4"
     build: ./Docker/app
     volumes:
