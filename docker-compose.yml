@@ -20,7 +20,7 @@ services:
   app:
     tty: true
     image: "bitnami/php-fpm:7.4"
-    build: ./Docker/app
+    # build: ./Docker/app
     volumes:
       - ./Docker/app/php/10-php.ini:/opt/bitnami/php/etc/conf.d/10-php.ini:ro
       - ./Docker/app/xdebug/30-xdebug.ini:/opt/bitnami/php/etc/conf.d/30-xdebug.ini:ro
