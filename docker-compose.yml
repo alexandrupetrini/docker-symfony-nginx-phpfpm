@@ -8,22 +8,18 @@ services:
   nginx:
     image: "bitnami/nginx:latest"
     ports:
-      - "80:8181"
-      - "443:8143"
+      - "80:8080"
     volumes:
       - ./Docker/nginx/vhosts/my_server_block_http_https.conf:/opt/bitnami/nginx/conf/server_blocks/my_server_block_http_https.conf:ro
     depends_on:
-      - app
+      - php-fpm
     networks:
       - app-tier
 
-  app:
+  php-fpm:
     tty: true
-    image: "bitnami/php-fpm:7.4"
-    # build: ./Docker/app
+    image: "bitnami/php-fpm:latest"
     volumes:
-      - ./Docker/app/php/10-php.ini:/opt/bitnami/php/etc/conf.d/10-php.ini:ro
-      - ./Docker/app/xdebug/30-xdebug.ini:/opt/bitnami/php/etc/conf.d/30-xdebug.ini:ro
       - .:/app
     networks:
       - app-tier
